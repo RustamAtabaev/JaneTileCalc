@@ -5,8 +5,100 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:TileCalc"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
-    <Grid>
-
+        Title="MainWindow" MinHeight="600" MinWidth="800">
+    <Grid Margin="20">
+        <Grid.RowDefinitions>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <Viewbox Name="Source"  Grid.Row="0" HorizontalAlignment="Left" Grid.Column="0">
+            <GroupBox Header="Исходные данные">
+                <Grid Name="InnerGrid">
+                    <Grid.RowDefinitions>
+                        <RowDefinition></RowDefinition>
+                        <RowDefinition></RowDefinition>
+                        <RowDefinition></RowDefinition>
+                        <RowDefinition></RowDefinition>
+                        <RowDefinition></RowDefinition>
+                        <RowDefinition></RowDefinition>
+                    </Grid.RowDefinitions>
+                    <Viewbox Grid.Row="0" HorizontalAlignment="Left">
+                        <TextBlock>Общая площадь</TextBlock>
+                    </Viewbox>
+                    <Viewbox Grid.Row="1" HorizontalAlignment="Left">
+                        <StackPanel Orientation="Horizontal">
+                            <TextBox MinWidth="150" MaxLength="20" TextChanged="TextBox_TextChanged">4</TextBox>
+                            <TextBlock Margin="5 0 0 0">м*2</TextBlock>
+                        </StackPanel>
+                    </Viewbox>
+                    <Viewbox Grid.Row="2" HorizontalAlignment="Left">
+                        <TextBlock>Стоимость за м*2</TextBlock>
+                    </Viewbox>
+                    <Viewbox Grid.Row="3" HorizontalAlignment="Left">
+                        <StackPanel Orientation="Horizontal">
+                            <TextBox MinWidth="150" MaxLength="20" TextChanged="TextBox_TextChanged">4</TextBox>
+                            <TextBlock Margin="5 0 0 0">Руб.</TextBlock>
+                        </StackPanel>
+                    </Viewbox>
+                    <Viewbox Grid.Row="4" HorizontalAlignment="Left">
+                        <TextBlock>Стоимость за штуку</TextBlock>
+                    </Viewbox>
+                    <Viewbox Grid.Row="5" HorizontalAlignment="Left">
+                        <StackPanel Orientation="Horizontal">
+                            <TextBox MinWidth="150" MaxLength="20" TextChanged="TextBox_TextChanged">4</TextBox>
+                            <TextBlock Margin="5 0 0 0">Руб.</TextBlock>
+                        </StackPanel>
+                    </Viewbox>
+                </Grid>
+            </GroupBox>
+        </Viewbox>
+        <Viewbox Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2">
+            <GroupBox Header="Результат вычисления">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition></RowDefinition>
+                        <RowDefinition></RowDefinition>
+                        <RowDefinition></RowDefinition>
+                        <RowDefinition></RowDefinition>
+                        <RowDefinition></RowDefinition>
+                        <RowDefinition></RowDefinition>
+                    </Grid.RowDefinitions>
+                    <Viewbox Grid.Row="0" HorizontalAlignment="Left">
+                        <TextBlock>Стоимость одной плитки</TextBlock>
+                    </Viewbox>
+                    <Viewbox Grid.Row="1" HorizontalAlignment="Left">
+                        <StackPanel Orientation="Horizontal">
+                            <TextBox MinWidth="150" MaxLength="20" TextChanged="TextBox_TextChanged">4</TextBox>
+                            <TextBlock Margin="5 0 0 0">Руб.</TextBlock>
+                        </StackPanel>
+                    </Viewbox>
+                    <Viewbox Grid.Row="2" HorizontalAlignment="Left">
+                        <TextBlock>Общая стоимость</TextBlock>
+                    </Viewbox>
+                    <Viewbox Grid.Row="3" HorizontalAlignment="Left">
+                        <StackPanel Orientation="Horizontal">
+                            <TextBox MinWidth="150" MaxLength="20" TextChanged="TextBox_TextChanged">4</TextBox>
+                            <TextBlock Margin="5 0 0 0">Руб.</TextBlock>
+                        </StackPanel>
+                    </Viewbox>
+                    <Viewbox Grid.Row="4" HorizontalAlignment="Left">
+                        <TextBlock>Колличество плитки</TextBlock>
+                    </Viewbox>
+                    <Viewbox Grid.Row="5" HorizontalAlignment="Left">
+                        <StackPanel Orientation="Horizontal">
+                            <TextBox MinWidth="150" MaxLength="20" TextChanged="TextBox_TextChanged">4</TextBox>
+                            <TextBlock Margin="5 0 0 0">Штук</TextBlock>
+                        </StackPanel>
+                    </Viewbox>
+                </Grid>
+            </GroupBox>
+        </Viewbox>
     </Grid>
 </Window>
