@@ -51,7 +51,7 @@
                     </Viewbox>
                     <Viewbox Grid.Row="5" HorizontalAlignment="Left">
                         <StackPanel Orientation="Horizontal">
-                            <TextBox Name="SourceCostPerUnit" MinWidth="150" MaxLength="20"></TextBox>
+                            <TextBox Name="SourceCostPerUnit" MinWidth="150" MaxLength="20" KeyDown="SourceCostPerUnit_OnKeyDown" TextChanged="SourceCostPerUnit_TextChanged"></TextBox>
                             <TextBlock Margin="5 0 0 0">Руб.</TextBlock>
                         </StackPanel>
                     </Viewbox>

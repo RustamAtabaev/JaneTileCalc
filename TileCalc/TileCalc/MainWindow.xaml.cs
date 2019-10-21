@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Controls.Primitives;
 using System.Windows.Data;
 using System.Windows.Documents;
 using System.Windows.Input;
@@ -34,7 +35,7 @@ namespace TileCalc
     }
     private void SourceTotalArea_OnTextChanged(object sender, TextChangedEventArgs e)
     {
-      Calculating((TextBox) sender, SourceCostPerMetr);
+      Calculating((TextBox) sender, SourceCostPerMetr, new TextBox());
     }
 
     private void SourceCostPerMetr_OnKeyDown(object sender, KeyEventArgs e)
@@ -43,8 +44,16 @@ namespace TileCalc
     }
     private void SourceCostPerMetr_TextChanged(object sender, TextChangedEventArgs e)
     {
-      Calculating((TextBox)sender, SourceTotalArea);
+      Calculating((TextBox)sender, SourceTotalArea, SourceCostPerUnit);
     }
 
+    private void SourceCostPerUnit_OnKeyDown(object sender, KeyEventArgs e)
+    {
+      CheckNumbers(sender, e);
+    }
+    private void SourceCostPerUnit_TextChanged(object sender, TextChangedEventArgs e)
+    {
+      Calculating((TextBox)sender, SourceTotalArea, SourceCostPerMetr);
+    }
   }
 }

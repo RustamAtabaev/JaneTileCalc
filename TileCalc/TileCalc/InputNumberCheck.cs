@@ -28,12 +28,16 @@ namespace TileCalc
       }
     }
 
-    private void Calculating(TextBox main, TextBox depended)
+    private void Calculating(TextBox main, TextBox depended, TextBox toHide)
     {
-      if (main != null && main.Text != "")
+      toHide.IsEnabled = main.Text == "" ? toHide.IsEnabled = true : toHide.IsEnabled = false;
+
+      if (main.Text != "")
       {
         if (depended != null && depended.Text != "")
+        {
           ResultTotalCost.Text = (Convert.ToDecimal(main.Text) * Convert.ToDecimal(depended.Text)).ToString();
+        }
       }
     }
   }
