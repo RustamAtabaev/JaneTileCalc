@@ -15,19 +15,36 @@ using System.Windows.Shapes;
 
 namespace TileCalc
 {
-    /// <summary>
-    /// Interaction logic for MainWindow.xaml
-    /// </summary>
-    public partial class MainWindow : Window
+  /// <summary>
+  /// Interaction logic for MainWindow.xaml
+  /// </summary>
+  public partial class MainWindow : Window
+  {
+    public MainWindow()
     {
-        public MainWindow()
-        {
-            InitializeComponent();
-        }
-
-        private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
-        {
-
-        }
+      InitializeComponent();
+      ListBoxItem operation = new ListBoxItem();
+      operation.Content = "Первая операция";
+      OperationList.Items.Add(operation);
     }
+
+    private void SourceTotalArea_OnKeyDown(object sender, KeyEventArgs e)
+    {
+      CheckNumbers(sender, e);
+    }
+    private void SourceTotalArea_OnTextChanged(object sender, TextChangedEventArgs e)
+    {
+      Calculating((TextBox) sender, SourceCostPerMetr);
+    }
+
+    private void SourceCostPerMetr_OnKeyDown(object sender, KeyEventArgs e)
+    {
+      CheckNumbers(sender, e);
+    }
+    private void SourceCostPerMetr_TextChanged(object sender, TextChangedEventArgs e)
+    {
+      Calculating((TextBox)sender, SourceTotalArea);
+    }
+
+  }
 }
