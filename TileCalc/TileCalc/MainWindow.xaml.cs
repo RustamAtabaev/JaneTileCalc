@@ -16,44 +16,70 @@ using System.Windows.Shapes;
 
 namespace TileCalc
 {
-  /// <summary>
-  /// Interaction logic for MainWindow.xaml
-  /// </summary>
-  public partial class MainWindow : Window
-  {
-    public MainWindow()
+    /// <summary>
+    /// Interaction logic for MainWindow.xaml
+    /// </summary>
+    public partial class MainWindow : Window
     {
-      InitializeComponent();
-      ListBoxItem operation = new ListBoxItem();
-      operation.Content = "Первая операция";
-      OperationList.Items.Add(operation);
-    }
+        enum OperationType
+        {
+            CalculationPerMetr,
+            CalculationPerUnit
+        }
 
-    private void SourceTotalArea_OnKeyDown(object sender, KeyEventArgs e)
-    {
-      CheckNumbers(sender, e);
-    }
-    private void SourceTotalArea_OnTextChanged(object sender, TextChangedEventArgs e)
-    {
-      Calculating((TextBox) sender, SourceCostPerMetr, new TextBox());
-    }
+        OperationType operationType;
 
-    private void SourceCostPerMetr_OnKeyDown(object sender, KeyEventArgs e)
-    {
-      CheckNumbers(sender, e);
-    }
-    private void SourceCostPerMetr_TextChanged(object sender, TextChangedEventArgs e)
-    {
-      Calculating((TextBox)sender, SourceTotalArea, SourceCostPerUnit);
-    }
+        public MainWindow()
+        {
+            InitializeComponent();
 
-    private void SourceCostPerUnit_OnKeyDown(object sender, KeyEventArgs e)
-    {
-      CheckNumbers(sender, e);
+            // Создаем масив операций
+            ListBoxItem operation = new ListBoxItem();
+            operation.Content = "Первая операция";
+            OperationList.Items.Add(operation);
+
+            // Определяем конфигурации
+            
+        }
+
+        /// <summary>
+        /// Метод определения стоимости вызываемый с общей стоимости
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void SourceTotalArea_OnTextChanged(object sender, TextChangedEventArgs e)
+        {
+            CalculatingTotal((TextBox)sender);
+        }
+
+        /// <summary>
+        /// Метод определения стоимости для параметра: стоимость за метр квадратный
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void SourceCostPerMetr_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            Calculating((TextBox)sender, SourceTotalArea, SourceCostPerUnit, operationType);
+        }
+
+        /// <summary>
+        /// Метод определения стоимости для параметра: стоимость за одну плитку
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void SourceCostPerUnit_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            Calculating((TextBox)sender, SourceTotalArea, SourceCostPerMetr, OperationType.CalculationPerUnit);
+        }
+
+        private void SourceTileSize1_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            
+        }
+
+        private void SourceTileSize2_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            throw new NotImplementedException();
+        }
     }
-    private void SourceCostPerUnit_TextChanged(object sender, TextChangedEventArgs e)
-    {
-      Calculating((TextBox)sender, SourceTotalArea, SourceCostPerMetr);
-    }
-  }
 }
